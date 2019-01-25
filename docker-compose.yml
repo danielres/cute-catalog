@@ -5,6 +5,8 @@ services:
   db:
     image: postgres:11.1
     restart: always
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: myapp
       POSTGRES_USER: myapp
