@@ -1158,7 +1158,7 @@ ajv-keywords@^3.0.0, ajv-keywords@^3.1.0:
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.2.0.tgz#e86b819c602cf8821ad637413698f1dec021847a"
   integrity sha1-6GuBnGAs+IIa1jdBNpjx3sAhhHo=
 
-ajv@^6.0.1, ajv@^6.1.0, ajv@^6.5.3, ajv@^6.5.5:
+ajv@^6.0.1, ajv@^6.1.0, ajv@^6.1.1, ajv@^6.5.3, ajv@^6.5.5:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.7.0.tgz#e3ce7bb372d6577bb1839f1dfdfcbf5ad2948d96"
   integrity sha512-RZXPviBTtfmtka9n9sy1N5M5b82CbxWIR6HIis4s3WQTXDJamc/0gpCWNGz6EWdWp4DOfjzJfhz/AS9zVPjjWg==
@@ -6836,6 +6836,15 @@ object.values@^1.0.4:
     es-abstract "^1.12.0"
     function-bind "^1.1.1"
     has "^1.0.3"
+
+objection@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/objection/-/objection-1.5.3.tgz#54cfc79313deac71bfdbb84f3e3b049482b8a7eb"
+  integrity sha512-8OgFjiFksmCk8GSfSRPKyYncOVGK3xBbcUoQTdR5EcqDy+Md45IfqV/CA/zpSwy43fU7afLajT4n/9MkrJk8MQ==
+  dependencies:
+    ajv "^6.1.1"
+    bluebird "^3.5.3"
+    lodash "^4.17.11"
 
 obuf@^1.0.0, obuf@^1.1.2:
   version "1.1.2"
