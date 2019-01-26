@@ -1,3 +1,4 @@
+require('./helpers/env/init')
 require('./db/init')
 
 const express = require('express')

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "concurrently 'yarn docker:up' 'yarn start' 'yarn s:start'",
     "start": "react-scripts start",
-    "s:start": "nodemon server/bin/www",
+    "s:start": "NODE_ENV=dev nodemon server/bin/www",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
