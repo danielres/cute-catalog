@@ -1,9 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-/* GET users listing. */
-router.get('/', (req, res) => {
-  res.json({products: [{id: 1, name: 'product one'}]})
+const Product = require('../models/Product')
+
+router.get('/', async(req, res) => {
+  const products = await Product.query()
+    .skipUndefined()
+    .orderBy('title')
+
+  res.json({ products })
 })
 
 module.exports = router
