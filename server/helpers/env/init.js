@@ -7,4 +7,3 @@ if (env === 'dev' || env === 'development') {
   console.log(`[server] Loading environment "${env}" from: "${file}"`)
   dotenv.load({ path: path.resolve(file) })
 }
-

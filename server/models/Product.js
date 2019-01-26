@@ -13,10 +13,9 @@ class Product extends Model {
 
       properties: {
         id: { type: 'integer' },
-      }
+      },
     }
   }
-
 }
 
 module.exports = Product
