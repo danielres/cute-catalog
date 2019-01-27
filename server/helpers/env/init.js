@@ -3,14 +3,24 @@ const path = require('path')
 
 const env = process.env.NODE_ENV
 
+// test (development overrides )
 ;(() => {
-  const file = '.env.local'
-  console.log(`[server] Loading local env vars "${env}" from: "${file}"`)
+  if (env !== 'test') return
+  const file = '.env.test'
+  console.log(`[env/init] Loading env vars from: "${file}"`)
   dotenv.load({ path: path.resolve(file) })
 })()
 
-if (env === 'dev' || env === 'development') {
+// development secrets
+;(() => {
+  const file = '.env.local'
+  console.log(`[env/init] Loading env vars from: "${file}"`)
+  dotenv.load({ path: path.resolve(file) })
+})()
+
+// development
+if (env === 'dev' || env === 'development' || env === 'test') {
   const file = '.env'
-  console.log(`[server] Loading environment "${env}" from: "${file}"`)
+  console.log(`[env/init] Loading env vars from: "${file}"`)
   dotenv.load({ path: path.resolve(file) })
 }
