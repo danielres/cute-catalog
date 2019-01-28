@@ -4,6 +4,9 @@ exports.up = knex => {
     table.string('name')
     table.string('password')
     table.string('facebookId')
+    table.string('email')
+    table.timestamps(true, true)
+    table.unique(['facebookId', 'email'])
   })
 }
 

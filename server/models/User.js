@@ -1,6 +1,11 @@
 const { Model } = require('objection')
 
-class User extends Model {
+const unique = require('objection-unique')({
+  fields: ['facebookId', 'email'],
+  identifiers: ['id'],
+})
+
+class User extends unique(Model) {
   static get tableName() {
     return 'User'
   }
@@ -9,11 +14,12 @@ class User extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['name'],
+      required: ['name', 'email'],
 
       properties: {
         id: { type: 'integer' },
         name: { type: 'string' },
+        email: { type: 'string' },
       },
     }
   }
