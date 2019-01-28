@@ -27,6 +27,7 @@
     "knex": "^0.16.3",
     "morgan": "~1.9.0",
     "objection": "^1.5.3",
+    "objection-unique": "^1.0.1",
     "passport": "^0.4.0",
     "passport-facebook": "^3.0.0",
     "passport-local": "^1.0.0",
