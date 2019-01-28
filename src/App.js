@@ -1,49 +1,25 @@
-import React, { Component } from 'react'
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const onLogin = e => {
-  e.preventDefault()
-  fetch('/api/login', {
-    method: 'post',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ username: 'John', password: 'pw' }),
-  })
-}
+import React from 'react'
 
-class App extends Component {
-  state = { products: [] }
+import { onFetchPrivateData, onLogin } from './api'
 
-  componentDidMount = async () => {
-    const { products } = await (await fetch('/api/products')).json()
-    this.setState({ products })
-  }
+import Products from './Products'
+import LoginStatus from './LoginStatus'
 
-  render() {
-    return (
-      <div className="container">
-        <div className="header">
-          <button onClick={onLogin}>Login</button>
-        </div>
+const App = () => (
+  <div className="container">
+    <div className="header">
+      <button onClick={onLogin}>Login</button>
+      <a href="/api/login/facebook">Login with FB</a>
+      <button onClick={onFetchPrivateData}>fetch private data</button>
+    </div>
 
-        <h1>Products</h1>
+    <LoginStatus />
 
-        {this.state.products.map(p => (
-          <>
-            <div>
-              <h2>{p.title}</h2>
-
-              <div>{p.description}</div>
-            </div>
-            <hr />
-          </>
-        ))}
-      </div>
-    )
-  }
-}
+    <h1>Products</h1>
+    <Products />
+  </div>
+)
 
 export default App
