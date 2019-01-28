@@ -12,6 +12,14 @@ const routesMap = {
     },
   },
 
+  LOGIN: {
+    path: '/login',
+  },
+
+  PROFILE: {
+    path: '/profile',
+  },
+
   CATCH_ALL_REDIRECT: {
     path: '*',
     thunk: dispatch => dispatch(redirect(toHome())),
