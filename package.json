@@ -25,6 +25,7 @@
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.4.0",
     "knex": "^0.16.3",
+    "lodash": "^4.17.11",
     "morgan": "~1.9.0",
     "objection": "^1.5.3",
     "objection-unique": "^1.0.1",
