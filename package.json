@@ -7,6 +7,7 @@
     "start": "react-scripts start",
     "s:start": "NODE_ENV=dev nodemon server/bin/www",
     "s:db:migrate": "knex migrate:latest",
+    "s:test": "jest server",
     "s:test:db:create": "node server/db/test/createDb.js",
     "s:test:db:drop": "node server/db/test/dropDb.js",
     "s:test:db:migrate": "NODE_ENV=test knex migrate:latest",
