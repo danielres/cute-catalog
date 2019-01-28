@@ -12,6 +12,7 @@ describe('findOrCreateUserByFacebookId()', () => {
     const params = {
       facebookId: '12345667891234567',
       name: 'John Doe',
+      email: 'john.example.com',
     }
 
     const user1 = await findOrCreateUserByFacebookId(params)
