@@ -8,14 +8,12 @@ import ProductCard from 'shared/ProductCard'
 
 const Thumbs = ({ prevProduct, product, nextProduct }) => (
   <div className="row justify-content-center">
-    <div className="col-1 text-center my-auto">
-      <Link
-        className="link-lightgray h5"
-        to={toProduct({ productId: prevProduct.id })}
-      >
-        <i className="fa fa-chevron-left mb-4" />
-      </Link>
-    </div>
+    <Link
+      className="link-lightgray h5 col-1 text-center my-auto"
+      to={toProduct({ productId: prevProduct.id })}
+    >
+      <i className="fa fa-chevron-left mb-4" />
+    </Link>
 
     <div className="col-8">
       <div className="row">
@@ -37,14 +35,12 @@ const Thumbs = ({ prevProduct, product, nextProduct }) => (
       </div>
     </div>
 
-    <div className="col-1 text-center my-auto">
-      <Link
-        className="link-lightgray h5"
-        to={toProduct({ productId: nextProduct.id })}
-      >
-        <i className="fa fa-chevron-right mb-4" />
-      </Link>
-    </div>
+    <Link
+      className="col-1 text-center my-auto link-lightgray h5"
+      to={toProduct({ productId: nextProduct.id })}
+    >
+      <i className="fa fa-chevron-right mb-4" />
+    </Link>
   </div>
 )
 
