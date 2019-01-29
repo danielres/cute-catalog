@@ -16,9 +16,15 @@ app.use(cookieParser())
 
 app.use('/api/login', require('./routes/login'))
 app.use('/api/products', require('./routes/products'))
+app.use('/api/users', verifyToken, require('./routes/users'))
 
 app.use('/api/private', verifyToken, (req, res) => {
   res.json({ userId: req.decoded.userId })
+})
+
+// eslint-disable-next-line no-unused-vars
+app.use((error, req, res, next) => {
+  res.status(res.statusCode || 500).json({ error: error.message })
 })
 
 module.exports = app
