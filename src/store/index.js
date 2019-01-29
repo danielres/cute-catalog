@@ -4,6 +4,7 @@ import {
   combineReducers,
   createStore,
 } from 'redux'
+import queryString from 'query-string'
 import thunkMiddleware from 'redux-thunk'
 import { connectRoutes } from 'redux-first-router'
 
@@ -18,7 +19,9 @@ const {
   reducer: locationReducer,
   middleware: routerMiddleware,
   enhancer: routerEnhancer,
-} = connectRoutes(routesMap)
+} = connectRoutes(routesMap, {
+  querySerializer: queryString,
+})
 
 const rootReducer = combineReducers({
   currentUser: currentUserReducer,
