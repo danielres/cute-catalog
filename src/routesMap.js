@@ -6,6 +6,16 @@ import { fetchCurrentUser } from 'store/currentUser/actions'
 import { fetchProducts } from 'store/products/actions'
 
 const routesMap = {
+  ADMIN: {
+    path: '/admin',
+    thunk: async dispatch => {
+      const currentUser = await dispatch(fetchCurrentUser()).catch(() =>
+        dispatch(toLogin())
+      )
+      if (!currentUser.isAdmin) dispatch(toLogin())
+    },
+  },
+
   HOME: {
     path: '/',
     thunk: dispatch => dispatch(fetchProducts()),

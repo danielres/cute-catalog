@@ -11,6 +11,7 @@ export const fetchCurrentUser = () => async dispatch => {
   try {
     const { currentUser } = await api.fetchCurrentUser()
     dispatch({ type: FETCH_CURRENT_USER_SUCCESS, payload: { currentUser } })
+    return currentUser
   } catch (error) {
     dispatch({ type: FETCH_CURRENT_USER_FAILURE, error: error.message })
     throw error

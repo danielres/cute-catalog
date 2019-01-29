@@ -4,8 +4,11 @@ import React from 'react'
 
 import Product from '../pages/Product'
 import Products from '../Products'
+
+import Admin from '../pages/Admin'
 import Profile from '../pages/Profile'
 import LoginBox from '../pages/Login/LoginBox'
+
 import Navbar from './Navbar'
 
 import GlobalStyle from './GlobalStyle'
@@ -16,6 +19,13 @@ const App = ({ page }) => (
 
     <Navbar />
     <div className="pt-3">
+      {page === 'ADMIN' && (
+        <>
+          <h2>Admin</h2>
+          <Admin />
+        </>
+      )}
+
       {page === 'HOME' && <Products />}
 
       {page === 'LOGIN' && <LoginBox />}
@@ -23,10 +33,10 @@ const App = ({ page }) => (
       {page === 'PRODUCT' && <Product />}
 
       {page === 'PROFILE' && (
-        <div>
-          <h1>Profile</h1>
+        <>
+          <h2>Profile</h2>
           <Profile />
-        </div>
+        </>
       )}
     </div>
   </div>
