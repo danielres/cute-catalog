@@ -1,7 +1,8 @@
 import { redirect } from 'redux-first-router'
 
-import { toHome } from 'store/routerActions'
+import { toHome, toLogin } from 'store/routerActions'
 
+import { fetchCurrentUser } from 'store/currentUser/actions'
 import { fetchProducts } from 'store/products/actions'
 
 const routesMap = {
@@ -18,6 +19,8 @@ const routesMap = {
 
   PROFILE: {
     path: '/profile',
+    thunk: dispatch =>
+      dispatch(fetchCurrentUser()).catch(() => dispatch(toLogin())),
   },
 
   CATCH_ALL_REDIRECT: {

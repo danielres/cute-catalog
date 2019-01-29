@@ -18,9 +18,9 @@ export default () => {
   const authExpiresAt = Cookies.get('authExpiresAt')
 
   return authExpiresAt ? (
-    <div>
+    <>
       Signed in until: <Timer timestamp={authExpiresAt} />{' '}
-    </div>
+    </>
   ) : (
     'Not signed in'
   )

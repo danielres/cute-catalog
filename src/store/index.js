@@ -8,6 +8,8 @@ import thunkMiddleware from 'redux-thunk'
 import { connectRoutes } from 'redux-first-router'
 
 import routesMap from 'routesMap'
+
+import currentUserReducer from './currentUser/currentUserReducer'
 import productsReducer from './products/productsReducer'
 
 const { REACT_APP_ENABLE_REDUX_DEVTOOLS } = process.env
@@ -19,6 +21,7 @@ const {
 } = connectRoutes(routesMap)
 
 const rootReducer = combineReducers({
+  currentUser: currentUserReducer,
   location: locationReducer,
   products: productsReducer,
 })
