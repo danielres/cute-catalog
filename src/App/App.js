@@ -6,15 +6,7 @@ import Products from '../Products'
 import Profile from '../pages/Profile'
 import LoginBox from '../pages/Login/LoginBox'
 import Navbar from './Navbar'
-
-import { createGlobalStyle } from 'styled-components/macro'
-
-const GlobalStyle = createGlobalStyle`
-  .bg-gray {
-    background: #e9ecef;
-  }
-  .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-`
+import GlobalStyle from './GlobalStyle'
 
 const App = ({ page }) => (
   <div className="container">
