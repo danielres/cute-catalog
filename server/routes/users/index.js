@@ -5,7 +5,7 @@ const router = express.Router()
 
 const findUserById = require('../../queries/findUserById')
 
-const whitelist = ['email', 'name']
+const whitelist = ['email', 'isAdmin', 'name']
 
 router.get('/current', async (req, res) => {
   const { userId } = req.decoded

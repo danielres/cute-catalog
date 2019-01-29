@@ -19,9 +19,18 @@ const Profile = ({ currentUser, isLoading }) => (
         <Value>{currentUser.email}</Value>
       </div>
 
-      <div>
-        <LoginStatus />
-      </div>
+      <hr />
+
+      <LoginStatus />
+
+      {currentUser.isAdmin && (
+        <>
+          <hr />
+          <div>
+            <b>Administrator</b>
+          </div>
+        </>
+      )}
     </div>
   </Loader>
 )
