@@ -5,6 +5,14 @@ const GlobalStyle = createGlobalStyle`
     background: #e9ecef;
   }
 
+  .link-gray {
+    color: rgba(0,0,0,.5);
+    &:hover{
+      color: rgba(0,0,0,.9);
+      text-decoration: none;
+    }
+  }
+
   .box-shadow {
     box-shadow: 0 .15rem .55rem rgba(0, 0, 0, .07);
   }

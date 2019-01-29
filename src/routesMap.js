@@ -8,13 +8,16 @@ import { fetchProducts } from 'store/products/actions'
 const routesMap = {
   HOME: {
     path: '/',
-    thunk: dispatch => {
-      dispatch(fetchProducts())
-    },
+    thunk: dispatch => dispatch(fetchProducts()),
   },
 
   LOGIN: {
     path: '/login',
+  },
+
+  PRODUCT: {
+    path: '/products/:productId',
+    thunk: dispatch => dispatch(fetchProducts()),
   },
 
   PROFILE: {

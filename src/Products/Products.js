@@ -1,17 +1,15 @@
+import Link from 'redux-first-router-link'
 import React from 'react'
 
+import { toProduct } from 'store/routerActions'
+
+import ProductCard from 'shared/ProductCard'
+
 const Product = ({ product }) => (
-  <div class="col-md-4">
-    <div class="card mb-4 box-shadow">
-      <img
-        class="card-img-top"
-        alt="Thumbnail"
-        src={`https://placekitten.com/320/240?image=${product.id}`}
-      />
-      <div class="card-body">
-        <p class="card-text">{product.title}</p>
-      </div>
-    </div>
+  <div className="col-md-4">
+    <Link to={toProduct({ productId: product.id })} className="link-gray">
+      <ProductCard product={product} />
+    </Link>
   </div>
 )
 

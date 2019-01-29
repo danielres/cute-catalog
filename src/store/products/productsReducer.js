@@ -7,10 +7,10 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_PRODUCT_SUCCESS:
-      const { id, ...rest } = payload.product
+      const { product } = payload
       return {
         ...state,
-        items: { ...state.items, [id]: rest },
+        items: { ...state.items, [product.id]: product },
       }
 
     case FETCH_PRODUCTS_SUCCESS:
@@ -19,7 +19,7 @@ export default (state = initialState, { type, payload }) => {
         items: {
           ...state.items,
           ...payload.products.reduce(
-            (acc, { id, ...rest }) => ({ ...acc, [id]: rest }),
+            (acc, product) => ({ ...acc, [product.id]: product }),
             {}
           ),
         },

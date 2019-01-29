@@ -5,8 +5,8 @@ describe(`on ${types.FETCH_PRODUCTS_SUCCESS}`, () => {
   it('updates the products list', () => {
     const state = {
       items: {
-        1: { title: 'one' },
-        2: { title: 'two' },
+        1: { id: 1, title: 'one' },
+        2: { id: 2, title: 'two' },
       },
     }
 
@@ -25,9 +25,9 @@ describe(`on ${types.FETCH_PRODUCTS_SUCCESS}`, () => {
 
     const expected = {
       items: {
-        1: { title: 'one' },
-        2: { title: 'two(new)' },
-        3: { title: 'three' },
+        1: { id: 1, title: 'one' },
+        2: { id: 2, title: 'two(new)' },
+        3: { id: 3, title: 'three' },
       },
     }
     expect(reducer(state, action)).toEqual(expected)
@@ -38,8 +38,8 @@ describe(`on ${types.FETCH_PRODUCT_SUCCESS}`, () => {
   it('updates the product in the list', () => {
     const state = {
       items: {
-        1: { title: 'one' },
-        2: { title: 'two' },
+        1: { id: 1, title: 'one' },
+        2: { id: 2, title: 'two' },
       },
     }
 
@@ -56,8 +56,8 @@ describe(`on ${types.FETCH_PRODUCT_SUCCESS}`, () => {
 
     const expected = {
       items: {
-        1: { title: 'one' },
-        2: { title: 'two', details: 'details' },
+        1: { id: 1, title: 'one' },
+        2: { id: 2, title: 'two', details: 'details' },
       },
     }
     expect(reducer(state, action)).toEqual(expected)
