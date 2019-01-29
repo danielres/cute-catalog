@@ -2,7 +2,6 @@ import Cookies from 'js-cookie'
 import React from 'react'
 import { NavLink } from 'redux-first-router-link'
 
-import { onFetchPrivateData } from 'api'
 import { toHome, toLogin, toProfile } from 'store/routerActions'
 
 const NavbarItem = ({ children, className, to }) => (
@@ -22,14 +21,6 @@ const Navbar = () => {
         <NavbarItem className="pl-0" to={toHome()}>
           Home
         </NavbarItem>
-        <li className="nav-item">
-          <button
-            className="nav-link btn btn-link"
-            onClick={onFetchPrivateData}
-          >
-            [Fetch private data]
-          </button>
-        </li>
       </ul>
 
       <ul className="navbar-nav ml-auto">

@@ -35,8 +35,6 @@ const postResource = (url, body) => {
 export const onLogin = () =>
   postResource('/api/login', { username: 'John', password: 'pw' })
 
-export const onFetchPrivateData = () => fetchResource('/api/private')
-
 export const fetchCurrentUser = () => fetchResource('/api/users/current')
 
 export const fetchProducts = () => fetchResource('/api/products')
