@@ -13,6 +13,7 @@ const routesMap = {
         dispatch(toLogin())
       )
       if (!currentUser.isAdmin) dispatch(toLogin())
+      dispatch(fetchProducts())
     },
   },
 

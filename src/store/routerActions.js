@@ -4,6 +4,11 @@ export const toHome = () => ({ type: 'HOME' })
 
 export const toLogin = () => ({ type: 'LOGIN' })
 
+export const toAdminProduct = ({ productId }) => ({
+  type: 'ADMIN',
+  query: { product: productId },
+})
+
 export const toProduct = ({ productId }) => ({
   type: 'PRODUCT',
   payload: { productId },
