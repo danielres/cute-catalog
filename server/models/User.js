@@ -18,8 +18,9 @@ class User extends unique(Model) {
 
       properties: {
         id: { type: 'integer' },
-        name: { type: 'string' },
         email: { type: 'string' },
+        name: { type: 'string' },
+        isAdmin: { type: 'boolean' },
       },
     }
   }
