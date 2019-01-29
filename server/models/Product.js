@@ -9,10 +9,13 @@ class Product extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['title'],
+      required: ['imageSrc'],
 
       properties: {
         id: { type: 'integer' },
+        title: { type: 'string' },
+        description: { type: 'text' },
+        imageSrc: { type: 'string' },
       },
     }
   }
