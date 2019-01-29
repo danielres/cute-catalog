@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Product = ({ children, index }) => (
+const Product = ({ product }) => (
   <div class="col-md-4">
     <div class="card mb-4 box-shadow">
       <img
         class="card-img-top"
         alt="Thumbnail"
-        src={`https://placekitten.com/320/240?image=${index + 1}`}
+        src={`https://placekitten.com/320/240?image=${product.id}`}
       />
       <div class="card-body">
-        <p class="card-text">{children}</p>
+        <p class="card-text">{product.title}</p>
       </div>
     </div>
   </div>
@@ -17,10 +17,8 @@ const Product = ({ children, index }) => (
 
 export default ({ products }) => (
   <div className="row">
-    {products.map((p, i) => (
-      <Product index={i} key={i}>
-        {p.title}
-      </Product>
+    {products.map(product => (
+      <Product key={product.id} product={product} />
     ))}
   </div>
 )
