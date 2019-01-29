@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components/macro'
 
 const GlobalStyle = createGlobalStyle`
+  .fa {
+    vertical-align: middle;
+  }
+
   .bg-gray {
     background: #e9ecef;
   }

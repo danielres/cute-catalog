@@ -14,18 +14,18 @@ const Product = ({ isLoading, product, nextProduct, prevProduct }) => (
           className="link-gray"
           to={toProduct({ productId: prevProduct.id })}
         >
-          prev
+          <i className="fa fa-chevron-left" /> prev
         </Link>
       </div>
 
       <h2 className="col text-center">{product.title}</h2>
 
-      <div className="col-1">
+      <div className="col-1 text-right">
         <Link
           className="link-gray"
           to={toProduct({ productId: nextProduct.id })}
         >
-          next
+          next <i className="fa fa-chevron-right" />
         </Link>
       </div>
     </div>
