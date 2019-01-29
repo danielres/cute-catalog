@@ -13,19 +13,16 @@ const GlobalStyle = createGlobalStyle`
   .bg-gray {
     background: #e9ecef;
   }
+  .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 `
 
 const App = ({ page }) => (
   <div className="container">
     <GlobalStyle />
+
     <Navbar />
     <div className="pt-3">
-      {page === 'HOME' && (
-        <div>
-          <h1>Products</h1>
-          <Products />
-        </div>
-      )}
+      {page === 'HOME' && <Products />}
 
       {page === 'LOGIN' && (
         <div>
