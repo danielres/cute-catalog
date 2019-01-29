@@ -42,11 +42,7 @@ const Basic = ({ product, onSubmit }) => {
           <br />
 
           <div>
-            <img
-              alt="Thumbnail"
-              src={`https://placekitten.com/320/240?image=${product.id}`}
-              width="100%"
-            />
+            <img alt="Thumbnail" src={product.imageSrc} width="100%" />
           </div>
 
           <br />
