@@ -14,9 +14,13 @@ const Product = ({ product }) => (
 )
 
 export default ({ products }) => (
-  <div className="row">
-    {products.map(product => (
-      <Product key={product.id} product={product} />
-    ))}
-  </div>
+  <>
+    <h2 className="invisible">Products</h2>
+
+    <div className="row">
+      {products.map(product => (
+        <Product key={product.id} product={product} />
+      ))}
+    </div>
+  </>
 )
