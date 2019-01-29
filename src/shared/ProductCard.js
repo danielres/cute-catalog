@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProductCard = ({ product }) => (
+const ProductCard = ({ product, imageOnly }) => (
   <div className="card mb-4 box-shadow">
     <img
       className="card-img-top"
@@ -8,9 +8,11 @@ const ProductCard = ({ product }) => (
       src={`https://placekitten.com/320/240?image=${product.id}`}
     />
 
-    <div className="card-body">
-      <p className="card-text">{product.title}</p>
-    </div>
+    {!imageOnly && (
+      <div className="card-body">
+        <p className="card-text">{product.title}</p>
+      </div>
+    )}
   </div>
 )
 

@@ -17,6 +17,14 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .link-lightgray {
+    color: rgba(0,0,0,.2);
+    &:hover{
+      color: rgba(0,0,0,.6);
+      text-decoration: none;
+    }
+  }
+
   .box-shadow {
     box-shadow: 0 .15rem .55rem rgba(0, 0, 0, .07);
   }

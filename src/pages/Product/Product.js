@@ -6,30 +6,59 @@ import { toProduct } from 'store/routerActions'
 import Loader from 'shared/Loader'
 import ProductCard from 'shared/ProductCard'
 
-const Product = ({ isLoading, product, nextProduct, prevProduct }) => (
-  <Loader isLoading={isLoading}>
-    <div className="row">
-      <div className="col-1">
-        <Link
-          className="link-gray"
-          to={toProduct({ productId: prevProduct.id })}
-        >
-          <i className="fa fa-chevron-left" /> prev
-        </Link>
-      </div>
+const Thumbs = ({ prevProduct, product, nextProduct }) => (
+  <div className="row justify-content-center">
+    <div className="col-1 text-center my-auto">
+      <Link
+        className="link-lightgray h5"
+        to={toProduct({ productId: prevProduct.id })}
+      >
+        <i className="fa fa-chevron-left mb-4" />
+      </Link>
+    </div>
 
-      <h2 className="col text-center">{product.title}</h2>
+    <div className="col-8">
+      <div className="row">
+        <div className="col">
+          <Link to={toProduct({ productId: prevProduct.id })}>
+            <ProductCard imageOnly product={prevProduct} />
+          </Link>
+        </div>
 
-      <div className="col-1 text-right">
-        <Link
-          className="link-gray"
-          to={toProduct({ productId: nextProduct.id })}
-        >
-          next <i className="fa fa-chevron-right" />
-        </Link>
+        <div className="col">
+          <ProductCard imageOnly product={product} />
+        </div>
+
+        <div className="col">
+          <Link to={toProduct({ productId: nextProduct.id })}>
+            <ProductCard imageOnly product={nextProduct} />
+          </Link>
+        </div>
       </div>
     </div>
+
+    <div className="col-1 text-center my-auto">
+      <Link
+        className="link-lightgray h5"
+        to={toProduct({ productId: nextProduct.id })}
+      >
+        <i className="fa fa-chevron-right mb-4" />
+      </Link>
+    </div>
+  </div>
+)
+
+const Product = ({ isLoading, product, nextProduct, prevProduct }) => (
+  <Loader isLoading={isLoading}>
+    <h2 className=" text-center">{product.title}</h2>
+
     <ProductCard product={product} />
+
+    <Thumbs
+      prevProduct={prevProduct}
+      product={product}
+      nextProduct={nextProduct}
+    />
   </Loader>
 )
 
