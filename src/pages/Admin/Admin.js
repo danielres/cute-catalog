@@ -1,9 +1,10 @@
 import React from 'react'
 
 import Loader from 'shared/Loader'
+import ProductForm from './ProductForm/index'
 import Products from './Products'
 
-const Profile = ({ currentUser, isLoading, productId }) => (
+const Admin = ({ currentUser, isLoading }) => (
   <Loader isLoading={isLoading}>
     <p>Logged in as: {currentUser.name}</p>
 
@@ -12,9 +13,11 @@ const Profile = ({ currentUser, isLoading, productId }) => (
         <Products />
       </div>
 
-      {productId && <div>Product id {productId}</div>}
+      <div className="col">
+        <ProductForm />
+      </div>
     </div>
   </Loader>
 )
 
-export default Profile
+export default Admin
