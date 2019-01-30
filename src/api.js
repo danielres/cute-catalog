@@ -21,8 +21,8 @@ const fetchResource = async url => {
   throw new ApiResponseError(response, json.error)
 }
 
-const postResource = (url, body) => {
-  fetch(url, {
+const postResource = async (url, body) => {
+  const response = await fetch(url, {
     method: 'post',
     headers: {
       Accept: 'application/json',
@@ -30,6 +30,9 @@ const postResource = (url, body) => {
     },
     body: JSON.stringify(body),
   })
+  const json = await response.json()
+  if (response.ok) return json
+  throw new ApiResponseError(response, json.error)
 }
 
 export const onLogin = () =>
