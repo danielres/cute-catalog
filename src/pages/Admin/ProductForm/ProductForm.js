@@ -33,7 +33,9 @@ const Basic = ({ product, onSubmit }) => {
             type="text"
           />
           <ErrorMessage className="text-danger" component="div" name="title" />
+
           <br />
+
           <label htmlFor="title">Description</label>
           <Field
             className="form-control"
@@ -46,7 +48,9 @@ const Basic = ({ product, onSubmit }) => {
             component="div"
             name="description"
           />
+
           <br />
+
           <label htmlFor="imageSrc">Image src</label>
           <Field
             autoComplete="off"
@@ -68,21 +72,26 @@ const Basic = ({ product, onSubmit }) => {
               width="100%"
             />
           </div>
+
           <br />
-          <button
-            className="btn btn-primary"
-            type="submit"
-            disabled={isSubmitting}
-          >
-            Save
-          </button>{' '}
-          <button
-            className="btn btn-secondary"
-            onClick={() => resetForm()}
-            disabled={isSubmitting}
-          >
-            Reset
-          </button>
+
+          <div className="row justify-content-between no-gutters">
+            <button
+              className="btn btn-secondary"
+              onClick={() => resetForm()}
+              disabled={isSubmitting}
+            >
+              Reset
+            </button>
+
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              Save
+            </button>
+          </div>
         </Form>
       )}
     </Formik>
