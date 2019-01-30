@@ -6,7 +6,9 @@ const ProductCard = ({ product, imageOnly }) => (
 
     {!imageOnly && (
       <div className="card-body">
-        <p className="card-text">{product.title}</p>
+        <p className="card-text text-center text-muted">
+          {product.description}
+        </p>
       </div>
     )}
   </div>
