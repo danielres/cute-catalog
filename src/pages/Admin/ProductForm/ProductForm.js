@@ -1,6 +1,43 @@
+import styled from 'styled-components/macro'
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
+const ImagePreview = styled(({ className, src }) => (
+  <div className={className}>
+    <img alt="" width="100%" src={src} />
+  </div>
+))`
+  position: relative;
+
+  img {
+    min-height: 100px;
+  }
+
+  img:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: -0px;
+    left: 0;
+    height: 30px;
+    width: 100%;
+    background: white;
+  }
+
+  img:after {
+    content: '\f127';
+    display: block;
+    font-size: 16px;
+    font-style: normal;
+    font-family: FontAwesome;
+    color: rgb(100, 100, 100);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+`
 const Basic = ({ product, onSubmit }) => {
   if (!product) return null
 
@@ -64,13 +101,9 @@ const Basic = ({ product, onSubmit }) => {
             component="div"
             name="imageSrc"
           />
-          <div>
-            <img
-              className="mt-2"
-              alt="Thumbnail"
-              src={values.imageSrc}
-              width="100%"
-            />
+
+          <div className="mt-2">
+            <ImagePreview src={values.imageSrc} />
           </div>
 
           <br />
