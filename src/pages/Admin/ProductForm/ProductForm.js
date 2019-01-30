@@ -22,7 +22,7 @@ const Basic = ({ product, onSubmit }) => {
         return errors
       }}
     >
-      {({ isSubmitting, resetForm }) => (
+      {({ isSubmitting, resetForm, values }) => (
         <Form>
           <label htmlFor="title">Title</label>
           <Field
@@ -68,7 +68,7 @@ const Basic = ({ product, onSubmit }) => {
             <img
               className="mt-2"
               alt="Thumbnail"
-              src={product.imageSrc}
+              src={values.imageSrc}
               width="100%"
             />
           </div>
