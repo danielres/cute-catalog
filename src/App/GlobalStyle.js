@@ -24,6 +24,15 @@ const GlobalStyle = createGlobalStyle`
   .box-shadow {
     box-shadow: 0 .15rem .55rem rgba(0, 0, 0, .07);
   }
+
+  .small-gutters {
+    margin-right: -5px;
+    margin-left: -5px;
+    > [class*="col-"] {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+  }
 `
 
 export default GlobalStyle
