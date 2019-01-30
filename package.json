@@ -24,6 +24,7 @@
     "express": "~4.16.0",
     "formik": "^1.4.3",
     "http-proxy-middleware": "^0.19.1",
+    "imagekit": "^1.4.1",
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.4.0",
     "knex": "^0.16.3",
