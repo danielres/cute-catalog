@@ -21,44 +21,46 @@ const Or = styled(({ className }) => (
 
 const LoginBox = () => {
   return (
-    <div className="mt-3 mb-3 bg-gray jumbotron">
-      <h2 className="mb-5">Please sign in</h2>
+    <div className="row justify-content-center">
+      <div className="col-md-6 col-xl-4 mt-3 mb-3 bg-gray jumbotron">
+        <h2 className="mb-5">Please sign in</h2>
 
-      <a
-        className="btn btn-lg btn-primary btn-block"
-        href="/api/login/facebook"
-      >
-        Sign in with facebook
-      </a>
-
-      <Or />
-
-      <form>
-        <input
-          autoFocus
-          className="form-control"
-          id="email"
-          name="email"
-          placeholder="Email address"
-          required
-          type="email"
-        />
-        <input
-          className="form-control"
-          id="password"
-          name="password"
-          placeholder="Password"
-          required
-          type="password"
-        />
-        <button
+        <a
           className="btn btn-lg btn-primary btn-block"
-          type="submit"
-          onClick={onLogin}
+          href="/api/login/facebook"
         >
-          Sign in with email / password
-        </button>
-      </form>
+          Sign in with facebook
+        </a>
+
+        <Or />
+
+        <form>
+          <input
+            autoFocus
+            className="form-control"
+            id="email"
+            name="email"
+            placeholder="Email address"
+            required
+            type="email"
+          />
+          <input
+            className="form-control"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+            type="password"
+          />
+          <button
+            className="btn btn-lg btn-primary btn-block"
+            type="submit"
+            onClick={onLogin}
+          >
+            Sign in with email / password
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
