@@ -48,7 +48,11 @@ const Product = ({ isLoading, product, nextProduct, prevProduct }) => (
   <Loader isLoading={isLoading}>
     <h2 className=" text-center">{product.title}</h2>
 
-    <ProductCard product={product} />
+    <div className="row justify-content-center">
+      <div className="col-md-10 col-lg-8">
+        <ProductCard product={product} />
+      </div>
+    </div>
 
     <Thumbs
       prevProduct={prevProduct}
