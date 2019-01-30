@@ -15,7 +15,7 @@ const Product = ({ product }) => (
 
 export default ({ products }) => (
   <>
-    <div className="row">
+    <div className="row small-gutters">
       {products.map(product => (
         <Product key={product.id} product={product} />
       ))}
