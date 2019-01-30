@@ -7,7 +7,7 @@ const uploadPlaceholders = async ({
 } = {}) => {
   const promises = [...Array(amount)].map((_, i) =>
     imagekit.uploadViaURL(
-      `http://placekitten.com/${dimensions}?image=${i + 1}`,
+      `https://placekitten.com/${dimensions}?image=${i + 1}`,
       {
         filename: `${i + 1}`,
         folder,
@@ -20,5 +20,4 @@ const uploadPlaceholders = async ({
     .then(console.log)
     .catch(console.error)
 }
-
 module.exports = uploadPlaceholders
