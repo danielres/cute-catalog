@@ -21,6 +21,12 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .link-no-underline {
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
   .box-shadow {
     box-shadow: 0 .15rem .55rem rgba(0, 0, 0, .07);
   }
