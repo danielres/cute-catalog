@@ -6,6 +6,7 @@ const Basic = ({ product, onSubmit }) => {
 
   return (
     <Formik
+      enableReinitialize
       initialValues={{
         title: product.title,
         description: product.description,
