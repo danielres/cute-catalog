@@ -20,7 +20,7 @@ app.use('/api/users', verifyToken, require('./routes/users'))
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, next) => {
-  res.status(res.statusCode || 500).json({ error: error.message })
+  res.status(error.code || res.statusCode || 500).json({ error: error.message })
 })
 
 module.exports = app
