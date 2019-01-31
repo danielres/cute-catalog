@@ -3,7 +3,7 @@ class ServerError extends Error {
     super()
     this.code = code
     this.message = message
-    console.error(originalError)
+    console.error('SERVER ERROR: ', originalError)
   }
 }
 

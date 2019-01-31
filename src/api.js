@@ -35,6 +35,20 @@ const postResource = async (url, body) => {
   throw new ApiResponseError(response, json.error)
 }
 
+export const putResource = async (url, body) => {
+  const response = await fetch(url, {
+    method: 'put',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+  const json = await response.json()
+  if (response.ok) return json
+  throw new ApiResponseError(response, json.error)
+}
+
 export const onLogin = () =>
   postResource('/api/login', { username: 'John', password: 'pw' })
 
@@ -43,3 +57,8 @@ export const fetchCurrentUser = () => fetchResource('/api/users/current')
 export const fetchProducts = () => fetchResource('/api/products')
 
 export const fetchProduct = id => fetchResource(`/api/products/${id}`)
+
+export const admin = {
+  createProduct: body => postResource('/api/admin/products', body),
+  updateProduct: (id, body) => putResource(`/api/admin/products/${id}`, body),
+}

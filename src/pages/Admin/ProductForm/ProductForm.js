@@ -49,9 +49,10 @@ const Basic = ({ product, onSubmit }) => {
         description: product.description,
         imageSrc: product.imageSrc,
       }}
-      onSubmit={async (values, { setSubmitting }) => {
+      onSubmit={async (values, { setSubmitting, resetForm }) => {
         await onSubmit(values)
         setSubmitting(false)
+        resetForm()
       }}
       validate={values => {
         let errors = {}
