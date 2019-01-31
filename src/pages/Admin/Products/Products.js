@@ -13,7 +13,7 @@ export default ({ products }) => (
         to={toAdminProduct({ productId: 'new' })}
       >
         <div className="card mb-4 border-0 align-self-center w-100">
-          <div className="text-center h2">+</div>
+          <div className="text-center h3">+</div>
         </div>
       </NavLink>
 
