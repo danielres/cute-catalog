@@ -1,13 +1,21 @@
-const { Model } = require('objection')
+const Password = require('objection-password')
+const { Model, mixin } = require('objection')
 
-const unique = require('objection-unique')({
-  fields: ['facebookId', 'email'],
-  identifiers: ['id'],
-})
+const Unique = require('objection-unique')
 
-class User extends unique(Model) {
+class User extends mixin(Model, [
+  Password({ allowEmptyPassword: true }),
+  Unique({
+    fields: ['facebookId', 'email'],
+    identifiers: ['id'],
+  }),
+]) {
   static get tableName() {
     return 'User'
+  }
+
+  static get hidden() {
+    return ['password']
   }
 
   // validations
