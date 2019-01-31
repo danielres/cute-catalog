@@ -60,7 +60,7 @@ const Basic = ({ product, onSubmit }) => {
         return errors
       }}
     >
-      {({ isSubmitting, resetForm, values }) => (
+      {({ isSubmitting, resetForm, values, dirty }) => (
         <Form>
           <label htmlFor="title">Title</label>
           <Field
@@ -113,7 +113,7 @@ const Basic = ({ product, onSubmit }) => {
             <button
               className="btn btn-secondary"
               onClick={() => resetForm()}
-              disabled={isSubmitting}
+              disabled={!dirty || isSubmitting}
             >
               Reset
             </button>
@@ -121,7 +121,7 @@ const Basic = ({ product, onSubmit }) => {
             <button
               className="btn btn-primary"
               type="submit"
-              disabled={isSubmitting}
+              disabled={!dirty || isSubmitting}
             >
               Save
             </button>
