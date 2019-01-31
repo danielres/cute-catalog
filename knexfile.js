@@ -3,7 +3,7 @@ require('./server/helpers/env/init')
 
 module.exports = {
   client: 'postgresql',
-  debug: true,
+  debug: process.env.NODE_ENV.startsWith('dev'),
   connection: {
     database: process.env.POSTGRES_DB,
     user: process.env.POSTGRES_USER,
