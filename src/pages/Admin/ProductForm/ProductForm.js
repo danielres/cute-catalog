@@ -45,9 +45,9 @@ const Basic = ({ product, onSubmit }) => {
     <Formik
       enableReinitialize
       initialValues={{
-        title: product.title,
-        description: product.description,
-        imageSrc: product.imageSrc,
+        title: product.title || '',
+        description: product.description || '',
+        imageSrc: product.imageSrc || '',
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         await onSubmit(values)
@@ -81,6 +81,8 @@ const Basic = ({ product, onSubmit }) => {
           </div>
 
           <br />
+
+          {console.log({ values: values.title })}
 
           <label htmlFor="title">Title</label>
           <Field
