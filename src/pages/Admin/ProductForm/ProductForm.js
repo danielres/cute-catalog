@@ -62,6 +62,26 @@ const Basic = ({ product, onSubmit }) => {
     >
       {({ isSubmitting, resetForm, values, dirty }) => (
         <Form>
+          <div className="row justify-content-between no-gutters">
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={!dirty || isSubmitting}
+            >
+              Save
+            </button>
+
+            <button
+              className="btn  btn-link link-gray pr-0"
+              onClick={() => resetForm()}
+              disabled={!dirty || isSubmitting}
+            >
+              Reset
+            </button>
+          </div>
+
+          <br />
+
           <label htmlFor="title">Title</label>
           <Field
             autoComplete="off"
@@ -105,26 +125,6 @@ const Basic = ({ product, onSubmit }) => {
 
           <div className="mt-2">
             <ImagePreview src={values.imageSrc} />
-          </div>
-
-          <br />
-
-          <div className="row justify-content-between no-gutters">
-            <button
-              className="btn btn-secondary"
-              onClick={() => resetForm()}
-              disabled={!dirty || isSubmitting}
-            >
-              Reset
-            </button>
-
-            <button
-              className="btn btn-primary"
-              type="submit"
-              disabled={!dirty || isSubmitting}
-            >
-              Save
-            </button>
           </div>
         </Form>
       )}
