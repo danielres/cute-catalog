@@ -1,7 +1,8 @@
 import styled from 'styled-components/macro'
 import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form } from 'formik'
 
+import FormRow from 'shared/Forms/Row'
 import UploadImageButton from 'Modals/buttons/UploadImageButton'
 
 const ImagePreview = styled(({ className, src }) => (
@@ -62,69 +63,44 @@ const Basic = ({ product, onSubmit }) => {
         return errors
       }}
     >
-      {({ isSubmitting, resetForm, values, dirty }) => (
+      {({ isSubmitting, resetForm, values, dirty, isValid }) => (
         <Form>
           <div className="row justify-content-between no-gutters">
             <button
               className="btn btn-primary"
               type="submit"
-              disabled={!dirty || isSubmitting}
+              disabled={!dirty || isSubmitting || !isValid}
             >
               Save
             </button>
 
             <button
-              className="btn  btn-link link-gray pr-0"
+              className="btn btn-link link-gray pr-0"
               onClick={() => resetForm()}
               disabled={!dirty || isSubmitting}
             >
               Reset
             </button>
           </div>
-          <br />
-          {console.log({ values: values.title })}
-          <label htmlFor="title">Title</label>
-          <Field
-            autoComplete="off"
-            className="form-control"
-            name="title"
-            placeholder="Title"
-            type="text"
-          />
-          <ErrorMessage className="text-danger" component="div" name="title" />
-          <br />
-          <label htmlFor="title">Description</label>
-          <Field
-            className="form-control"
-            name="description"
-            placeholder="description"
-            component="textarea"
-          />
-          <ErrorMessage
-            className="text-danger"
-            component="div"
-            name="description"
-          />
-          <br />
-          <label htmlFor="imageSrc">Image src</label>
 
-          <UploadImageButton className="btn btn-link btn-light btn-sm link-gray ml-3" />
+          <br />
 
-          <Field
-            autoComplete="off"
-            className="form-control"
+          <FormRow autoComplete={false} name="title" />
+
+          <FormRow component="textarea" name="description" />
+
+          <FormRow
+            label={
+              <>
+                Image src{' '}
+                <UploadImageButton className="btn btn-link btn-light btn-sm link-gray ml-3" />
+              </>
+            }
             name="imageSrc"
-            placeholder="Image src"
-            type="text"
+            placeholder="https://..."
           />
-          <ErrorMessage
-            className="text-danger"
-            component="div"
-            name="imageSrc"
-          />
-          <div className="mt-2">
-            <ImagePreview src={values.imageSrc} />
-          </div>
+
+          <ImagePreview src={values.imageSrc} />
         </Form>
       )}
     </Formik>
