@@ -11,11 +11,14 @@ import LoginBox from '../pages/Login/LoginBox'
 
 import Navbar from './Navbar'
 
+import Modals from 'Modals'
+
 import GlobalStyle from './GlobalStyle'
 
 const App = ({ page }) => (
   <div className="container">
     <GlobalStyle />
+    <Modals />
 
     <Navbar />
     <div className="pt-3">
