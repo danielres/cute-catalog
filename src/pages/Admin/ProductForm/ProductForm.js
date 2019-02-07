@@ -2,6 +2,8 @@ import styled from 'styled-components/macro'
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
+import UploadImageButton from 'Modals/buttons/UploadImageButton'
+
 const ImagePreview = styled(({ className, src }) => (
   <div className={className}>
     <img alt="" width="100%" src={src} />
@@ -79,11 +81,8 @@ const Basic = ({ product, onSubmit }) => {
               Reset
             </button>
           </div>
-
           <br />
-
           {console.log({ values: values.title })}
-
           <label htmlFor="title">Title</label>
           <Field
             autoComplete="off"
@@ -93,9 +92,7 @@ const Basic = ({ product, onSubmit }) => {
             type="text"
           />
           <ErrorMessage className="text-danger" component="div" name="title" />
-
           <br />
-
           <label htmlFor="title">Description</label>
           <Field
             className="form-control"
@@ -108,10 +105,11 @@ const Basic = ({ product, onSubmit }) => {
             component="div"
             name="description"
           />
-
           <br />
-
           <label htmlFor="imageSrc">Image src</label>
+
+          <UploadImageButton className="btn btn-link btn-light btn-sm link-gray ml-3" />
+
           <Field
             autoComplete="off"
             className="form-control"
@@ -124,7 +122,6 @@ const Basic = ({ product, onSubmit }) => {
             component="div"
             name="imageSrc"
           />
-
           <div className="mt-2">
             <ImagePreview src={values.imageSrc} />
           </div>
