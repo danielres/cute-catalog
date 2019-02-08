@@ -1,5 +1,9 @@
 const crypto = require('crypto')
 
+const { IMAGEKIT_API_KEY, IMAGEKIT_API_SECRET, IMAGEKIT_ID } = process.env
+const IMAGEKIT_API_URL =
+  'https://upload.imagekit.io/rest/api/image/' + IMAGEKIT_ID
+
 const calculateSignature = options => {
   const message = [
     {
@@ -26,10 +30,10 @@ const calculateSignature = options => {
 
 const getImageUploadEndpointAndSignature = options => {
   const merged = {
-    apiKey: process.env.IMAGEKIT_API_KEY,
-    apiSecret: process.env.IMAGEKIT_API_SECRET,
+    apiKey: IMAGEKIT_API_KEY,
+    apiSecret: IMAGEKIT_API_SECRET,
     folder: options.folder || '/uploads',
-    imagekitId: process.env.IMAGEKIT_ID,
+    imagekitId: IMAGEKIT_ID,
     useSecure: false,
     useSubdomain: false,
     useUniqueFilename: false,
@@ -38,7 +42,8 @@ const getImageUploadEndpointAndSignature = options => {
   }
 
   return {
-    endpoint: `https://upload.imagekit.io/rest/api/image/v2/${merged.apiKey}`,
+    apiKey: merged.apiKey,
+    endpoint: IMAGEKIT_API_URL,
     signature: calculateSignature(merged),
   }
 }
