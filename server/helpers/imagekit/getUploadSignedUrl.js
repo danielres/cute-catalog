@@ -28,7 +28,7 @@ const getUploadSignedUrl = options => {
   const merged = {
     apiKey: process.env.IMAGEKIT_API_KEY,
     apiSecret: process.env.IMAGEKIT_API_SECRET,
-    folder: '/uploads',
+    folder: options.folder || '/uploads',
     imagekitId: process.env.IMAGEKIT_ID,
     useSecure: false,
     useSubdomain: false,
