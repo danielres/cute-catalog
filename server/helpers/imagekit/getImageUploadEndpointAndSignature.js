@@ -24,7 +24,7 @@ const calculateSignature = options => {
     .digest('hex')
 }
 
-const getUploadSignedUrl = options => {
+const getImageUploadEndpointAndSignature = options => {
   const merged = {
     apiKey: process.env.IMAGEKIT_API_KEY,
     apiSecret: process.env.IMAGEKIT_API_SECRET,
@@ -43,4 +43,4 @@ const getUploadSignedUrl = options => {
   }
 }
 
-module.exports = getUploadSignedUrl
+module.exports = getImageUploadEndpointAndSignature
