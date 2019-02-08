@@ -7,7 +7,12 @@ describe('getUploadSignedUrl()', () => {
       filename: 'cute-cat01.jpg',
       folder: '/cats',
     }
-
-    expect(getUploadSignedUrl(options).length).toEqual(40)
+    const result = getUploadSignedUrl(options)
+    expect(result.signature.length).toEqual(40)
+    expect(result.endpoint).toEqual(
+      `https://upload.imagekit.io/rest/api/image/v2/${
+        process.env.IMAGEKIT_API_KEY
+      }`
+    )
   })
 })

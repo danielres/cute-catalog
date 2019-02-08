@@ -28,7 +28,7 @@ const getUploadSignedUrl = options => {
   const merged = {
     apiKey: process.env.IMAGEKIT_API_KEY,
     apiSecret: process.env.IMAGEKIT_API_SECRET,
-    folder: '/',
+    folder: '/uploads',
     imagekitId: process.env.IMAGEKIT_ID,
     useSecure: false,
     useSubdomain: false,
@@ -37,7 +37,10 @@ const getUploadSignedUrl = options => {
     timestamp: parseInt(Date.now() / 1000, 10),
   }
 
-  return calculateSignature(merged)
+  return {
+    endpoint: `https://upload.imagekit.io/rest/api/image/v2/${merged.apiKey}`,
+    signature: calculateSignature(merged),
+  }
 }
 
 module.exports = getUploadSignedUrl
