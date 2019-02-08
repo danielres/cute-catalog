@@ -59,6 +59,9 @@ export const fetchProducts = () => fetchResource('/api/products')
 export const fetchProduct = id => fetchResource(`/api/products/${id}`)
 
 export const admin = {
+  fetchImageUploadEndpointAndSignature: ({ filename }) =>
+    fetchResource(`/api/admin/images/uploads/endpoint?filename=${filename}`),
+
   createProduct: body => postResource('/api/admin/products', body),
   updateProduct: (id, body) => putResource(`/api/admin/products/${id}`, body),
 }

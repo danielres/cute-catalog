@@ -2,6 +2,8 @@ import styled from 'styled-components/macro'
 import React from 'react'
 import { Formik, Form } from 'formik'
 
+import bus from 'shared/Forms/Dropzone/bus'
+
 import FormRow from 'shared/Forms/Row'
 import UploadImageButton from 'Modals/buttons/UploadImageButton'
 
@@ -41,6 +43,21 @@ const ImagePreview = styled(({ className, src }) => (
     text-align: center;
   }
 `
+
+class ImageUploadSuccessWatcher extends React.Component {
+  componentDidMount() {
+    const { setFieldTouched, setFieldValue } = this.props
+    bus.take('IMAGE_UPLOAD_SUCCESS', ({ payload }) =>
+      setFieldValue('imageSrc', payload.url)
+    )
+    setFieldTouched('imageSrc')
+  }
+
+  render() {
+    return null
+  }
+}
+
 const Basic = ({ product, onSubmit }) => {
   if (!product) return null
 
@@ -63,21 +80,34 @@ const Basic = ({ product, onSubmit }) => {
         return errors
       }}
     >
-      {({ isSubmitting, resetForm, values, dirty, isValid }) => (
+      {({
+        dirty,
+        isSubmitting,
+        isValid,
+        resetForm,
+        setFieldTouched,
+        setFieldValue,
+        values,
+      }) => (
         <Form>
+          <ImageUploadSuccessWatcher
+            setFieldTouched={setFieldTouched}
+            setFieldValue={setFieldValue}
+          />
+
           <div className="row justify-content-between no-gutters">
             <button
               className="btn btn-primary"
-              type="submit"
               disabled={!dirty || isSubmitting || !isValid}
+              type="submit"
             >
               Save
             </button>
 
             <button
               className="btn btn-link link-gray pr-0"
-              onClick={() => resetForm()}
               disabled={!dirty || isSubmitting}
+              onClick={() => resetForm()}
             >
               Reset
             </button>
