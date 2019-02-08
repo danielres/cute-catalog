@@ -1,15 +1,13 @@
 const jwt = require('jsonwebtoken')
 
+const ServerError = require('../ServerError')
+
 const veryfyTokenMiddleware = (req, res, next) => {
   jwt.verify(req.cookies.auth, process.env.AUTH_SECRET, (err, decoded) => {
-    if (err) {
-      res.status(401)
-      err.message = 'Unauthorized'
-      next(err)
-    } else {
-      req.decoded = decoded
-      next()
-    }
+    if (err) return next(ServerError(401, 'Unauthorized', err))
+
+    req.decoded = decoded
+    next()
   })
 }
 

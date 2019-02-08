@@ -33,13 +33,7 @@ router.get('/images/uploads/endpoint', (req, res, next) => {
     const folder = '/cute-catalog'
     res.json(getImageUploadEndpointAndSignature({ filename, folder }))
   } catch (e) {
-    next(
-      ServerError(
-        500,
-        'Could not return image upload endpoint and signature',
-        e
-      )
-    )
+    next(ServerError(500, 'Could not resolve image upload token', e))
   }
 })
 

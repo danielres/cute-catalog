@@ -1,3 +1,5 @@
+const ServerError = require('../ServerError')
+
 const findUserById = require('../queries/findUserById')
 
 const ensureAdminMiddleware = async (req, res, next) => {
@@ -5,8 +7,7 @@ const ensureAdminMiddleware = async (req, res, next) => {
   const currentUser = await findUserById(userId)
   if (currentUser.isAdmin) return next()
 
-  res.status(401)
-  next(Error('Unauthorized'))
+  next(ServerError(401, 'Unauthorized'))
 }
 
 module.exports = ensureAdminMiddleware
