@@ -2,11 +2,17 @@ import Cookies from 'js-cookie'
 import React from 'react'
 import { NavLink } from 'redux-first-router-link'
 
+import { onLogout } from 'api'
 import { toHome, toLogin, toProfile } from 'store/routerActions'
 
-const NavbarItem = ({ children, className, to }) => (
+const NavbarItem = ({ children, className, onClick, to }) => (
   <li className="nav-item">
-    <NavLink className={'nav-link ' + className} to={to} exact>
+    <NavLink
+      className={'nav-link ' + className}
+      exact
+      onClick={onClick}
+      to={to}
+    >
       {children}
     </NavLink>
   </li>
@@ -25,7 +31,10 @@ const Navbar = () => {
 
       <ul className="navbar-nav ml-auto">
         {isLoggedIn ? (
-          <NavbarItem to={toProfile()}>Profile</NavbarItem>
+          <>
+            <NavbarItem to={toProfile()}>Profile</NavbarItem>
+            <NavbarItem onClick={onLogout}>Logout</NavbarItem>
+          </>
         ) : (
           <NavbarItem className="pr-0" to={toLogin()}>
             Login

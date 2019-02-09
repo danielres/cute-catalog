@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 app.use('/api/login', require('./routes/login'))
+app.use('/api/logout', require('./routes/logout'))
 app.use('/api/products', require('./routes/products'))
 app.use('/api/users', verifyToken, require('./routes/users'))
 
