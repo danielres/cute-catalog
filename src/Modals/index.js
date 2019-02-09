@@ -58,8 +58,19 @@ class ModalContainer extends Component {
 
     return (
       <>
+        {name === 'AUTOLOGOUT_WARNING' && (
+          <Modal title="Warning">
+            <p>
+              Your session expires in <b>{payload}</b> minutes.
+            </p>
+            <p>
+              You might want to logout and login again to extend your session.
+            </p>
+          </Modal>
+        )}
+
         {name === 'ERROR' && (
-          <Modal title="Error">{getErrorMessage(payload)} </Modal>
+          <Modal title="Error">{getErrorMessage(payload)}</Modal>
         )}
 
         {name === 'UPLOAD_IMAGE' && (
