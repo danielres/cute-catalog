@@ -4,11 +4,13 @@ require('./server/helpers/env/init')
 module.exports = {
   client: 'postgresql',
   debug: process.env.NODE_ENV.startsWith('dev'),
-  connection: {
-    database: process.env.POSTGRES_DB,
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-  },
+  connection: process.env.DATABASE_URL
+    ? process.env.DATABASE_URL
+    : {
+        database: process.env.POSTGRES_DB,
+        user: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASSWORD,
+      },
   pool: {
     min: 2,
     max: 10,
