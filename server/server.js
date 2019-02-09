@@ -1,14 +1,16 @@
 require('./helpers/env/init')
 require('./db/init')
 
-const express = require('express')
 const cookieParser = require('cookie-parser')
+const express = require('express')
 const logger = require('morgan')
+const path = require('path')
 
 const ensureAdmin = require('./middleware/ensureAdmin')
 const verifyToken = require('./middleware/verifyToken')
 
 const app = express()
+app.use(express.static(path.join(__dirname, '..', 'build/')))
 
 app.use(logger('dev'))
 app.use(express.json())
@@ -26,5 +28,10 @@ app.use('/api/admin', verifyToken, ensureAdmin, require('./routes/admin'))
 app.use((error, req, res, next) => {
   res.status(error.code || res.statusCode || 500).json({ error: error.message })
 })
+
+if (process.env.SERVE_STATIC_FRONTEND === 'true')
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'))
+  })
 
 module.exports = app
