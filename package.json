@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently 'yarn docker:up' 'yarn start' 'yarn s:start'",
+    "heroku-postbuild": "react-scripts build",
     "start": "react-scripts start",
     "s:start": "NODE_ENV=dev nodemon server/bin/www",
     "s:db:migrate": "knex migrate:latest",
