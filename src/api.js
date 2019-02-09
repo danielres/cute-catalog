@@ -52,6 +52,8 @@ export const putResource = async (url, body) => {
 export const onLogin = () =>
   postResource('/api/login', { username: 'John', password: 'pw' })
 
+export const onLogout = () => postResource('/api/logout')
+
 export const fetchCurrentUser = () => fetchResource('/api/users/current')
 
 export const fetchProducts = () => fetchResource('/api/products')
