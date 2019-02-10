@@ -67,3 +67,6 @@ export const admin = {
   createProduct: body => postResource('/api/admin/products', body),
   updateProduct: (id, body) => putResource(`/api/admin/products/${id}`, body),
 }
+
+export const postLoginEmailPasswordForm = values =>
+  postResource('/api/login', values)
