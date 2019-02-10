@@ -20,6 +20,7 @@
     "docker:up": "docker-compose up"
   },
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "bootstrap": "^4.2.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
