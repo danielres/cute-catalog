@@ -1,9 +1,14 @@
 import * as api from 'api'
 import {
+  CURRENT_USER_LOGGED_OUT,
   FETCH_CURRENT_USER_FAILURE,
   FETCH_CURRENT_USER_REQUEST,
   FETCH_CURRENT_USER_SUCCESS,
 } from 'store/types'
+
+export const logout = () => dispatch => {
+  api.onLogout().then(() => dispatch({ type: CURRENT_USER_LOGGED_OUT }))
+}
 
 export const fetchCurrentUser = () => async dispatch => {
   dispatch({ type: FETCH_CURRENT_USER_REQUEST })

@@ -1,13 +1,23 @@
 import {
+  CURRENT_USER_LOGGED_OUT,
   FETCH_CURRENT_USER_FAILURE,
   FETCH_CURRENT_USER_REQUEST,
   FETCH_CURRENT_USER_SUCCESS,
 } from '../types'
 
-const initialState = { currentUser: {}, isLoading: false }
+export const initialState = {
+  currentUser: {},
+  isLoading: false,
+  isLoggedIn: false,
+}
 
 export default (state = initialState, { type, payload, error }) => {
   switch (type) {
+    case CURRENT_USER_LOGGED_OUT:
+      return {
+        ...initialState,
+      }
+
     case FETCH_CURRENT_USER_FAILURE:
       return {
         ...state,
@@ -26,6 +36,7 @@ export default (state = initialState, { type, payload, error }) => {
         ...state,
         currentUser: payload.currentUser,
         isLoading: false,
+        isLoggedIn: true,
         error: null,
       }
 
