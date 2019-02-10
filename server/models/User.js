@@ -28,7 +28,7 @@ class User extends mixin(Model, [
         id: { type: 'integer' },
         email: { type: 'string' },
         name: { type: 'string' },
-        password: { type: 'string', minLength: 6 },
+        password: { type: 'string', minLength: 8 },
         isAdmin: { type: 'boolean' },
       },
     }
