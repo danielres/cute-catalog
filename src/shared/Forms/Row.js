@@ -9,18 +9,21 @@ const FormRow = ({
   label: l,
   name,
   placeholder: p,
+  type,
 }) => {
-  const Label = l ? l : upperFirst(name)
+  const label = l ? l : upperFirst(name)
   const placeholder = p ? p : upperFirst(name)
+  const showLabel = l !== null
 
   return (
     <div className="mb-3">
-      <label htmlFor={name}>{Label}</label>
+      {showLabel && <label htmlFor={name}>{label}</label>}
       <Field
         autoComplete={autoComplete ? 'on' : 'off'}
         className="form-control"
         component={component}
         name={name}
+        type={type}
         placeholder={placeholder}
       />
       <ErrorMessage className="text-danger" component="div" name={name} />
