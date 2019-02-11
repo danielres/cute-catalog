@@ -5,6 +5,10 @@ class Product extends Model {
     return 'Product'
   }
 
+  $beforeUpdate() {
+    this.updated_at = new Date().toISOString()
+  }
+
   // validations
   static get jsonSchema() {
     return {

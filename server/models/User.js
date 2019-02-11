@@ -18,6 +18,10 @@ class User extends mixin(Model, [
     return ['password']
   }
 
+  $beforeUpdate() {
+    this.updated_at = new Date().toISOString()
+  }
+
   // validations
   static get jsonSchema() {
     return {
