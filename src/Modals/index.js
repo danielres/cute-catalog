@@ -44,7 +44,9 @@ class ModalContainer extends Component {
     const getQueue = () => this.state.queue
 
     bus.take('OPEN_MODAL', ({ name, payload }) => {
-      this.setState({ queue: [{ name, payload }, ...getQueue()] })
+      this.setState({
+        queue: [{ name, payload }, ...getQueue().filter(o => o.name !== name)],
+      })
     })
 
     bus.take('CLOSE_MODAL', () =>
@@ -71,7 +73,7 @@ class ModalContainer extends Component {
         )}
 
         {name === 'ERROR' && (
-          <Modal title="Error">{getErrorMessage(payload)}</Modal>
+          <Modal title="Error">{getErrorMessage(payload)} </Modal>
         )}
 
         {name === 'REGISTRATION_CONFIRMED' && (
