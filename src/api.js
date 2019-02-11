@@ -70,3 +70,9 @@ export const admin = {
 
 export const postLoginEmailPasswordForm = values =>
   postResource('/api/login', values)
+
+export const postRegisterForm = values =>
+  postResource('/api/login/register', values)
+
+export const postRegisterConfirmationtoken = token =>
+  postResource(`/api/login/register/confirm`, { token })

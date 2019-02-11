@@ -1,10 +1,17 @@
 const express = require('express')
 const passport = require('passport')
 
-const facebookStrategy = require('./facebookStrategy')
-const findUserByEmailPassword = require('../../queries/findUserByEmailPassword')
 const ServerError = require('../../ServerError')
+
+const createUserByEmailPassword = require('../../queries/createUserByEmailPassword')
+const findUserByEmailPassword = require('../../queries/findUserByEmailPassword')
+const findUserById = require('../../queries/findUserById')
+
+const decodeToken = require('../../helpers/jwt/decodeToken')
+
+const facebookStrategy = require('./facebookStrategy')
 const setAuthCookies = require('./setAuthCookies')
+const sendRegistrationConfirmationEmailToUser = require('./sendRegistrationConfirmationEmailToUser')
 
 const router = express.Router()
 router.use(passport.initialize())
@@ -22,6 +29,47 @@ router.post('/', async (req, res, next) => {
     res.json({ success: true })
   } catch (e) {
     next(e)
+  }
+})
+
+router.post('/register', async (req, res, next) => {
+  try {
+    const { email, password, name } = req.body
+    const user = await createUserByEmailPassword({ email, name, password })
+    await sendRegistrationConfirmationEmailToUser(user)
+    res.json({ success: true })
+  } catch (e) {
+    if (e.name === 'ValidationError')
+      next(
+        ServerError(
+          400,
+          'Could not create a new user with these credentials, please try again or to login as an existing user instead.',
+          e
+        )
+      )
+    next(ServerError(500, 'Unknown error, please try again', e))
+  }
+})
+
+router.post('/register/confirm', async (req, res, next) => {
+  try {
+    const { userId } = await decodeToken({ token: req.body.token })
+    const user = await findUserById(userId)
+
+    if (user.emailConfirmedAt)
+      return res.json({ success: true, info: 'Email already confirmed' })
+
+    await user.$query().patch({ emailConfirmedAt: new Date().toISOString() })
+
+    res.json({ success: true })
+  } catch (e) {
+    next(
+      ServerError(
+        500,
+        'Could not confirm user account, please try again soon.',
+        e
+      )
+    )
   }
 })
 

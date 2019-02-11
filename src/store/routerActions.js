@@ -4,6 +4,8 @@ export const toHome = () => ({ type: 'HOME' })
 
 export const toLogin = () => ({ type: 'LOGIN' })
 
+export const toRegister = () => ({ type: 'REGISTER' })
+
 export const toAdminProduct = ({ productId }) => ({
   type: 'ADMIN',
   query: { product: productId },

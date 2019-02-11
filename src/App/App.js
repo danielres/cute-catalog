@@ -8,6 +8,7 @@ import Products from '../Products'
 import Admin from '../pages/Admin'
 import Profile from '../pages/Profile'
 import LoginBox from '../pages/Login/LoginBox'
+import RegisterBox from '../pages/Register/RegisterBox'
 
 import Navbar from './Navbar'
 
@@ -41,6 +42,8 @@ const App = ({ page }) => (
           <Profile />
         </>
       )}
+
+      {page === 'REGISTER' && <RegisterBox />}
     </div>
   </div>
 )

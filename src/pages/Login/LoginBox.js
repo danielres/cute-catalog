@@ -1,43 +1,31 @@
+import Link from 'redux-first-router-link'
 import React from 'react'
-import styled from 'styled-components/macro'
-import { onLogin } from '../../api'
+
+import { toRegister } from 'store/routerActions'
+
+import AuthBoxOuter from 'shared/AuthBoxOuter'
+import Separator from 'shared/Separator'
 
 import EmailPasswordForm from './EmailPasswordform'
 
-const Or = styled(({ className }) => (
-  <div className={className + ' mt-5 mb-5'}>
-    <span>or</span>
-  </div>
-))`
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-  span {
-    position: absolute;
-    display: inline-block;
-    background: #e9ecef;
-    margin-top: -12px;
-    padding: 0 10px;
-    margin-left: -10px;
-  }
-`
-
-const LoginBox = () => {
-  return (
-    <div className="row justify-content-center">
-      <div className="col-md-6 mt-3 mb-3 ">
-
-        <div className="bg-gray p-5 rounded">
-          <a className="btn  btn-primary btn-block" href="/api/login/facebook">
-          Sign in with facebook
-        </a>
-
-        <Or />
-
-          <EmailPasswordForm />
-        </div>
-      </div>
+const LoginBox = () => (
+  <>
+    <div className="mb-3 text-center">
+      <Link className="btn btn-link" to={toRegister()}>
+        New user?
+      </Link>
     </div>
-  )
-}
+
+    <AuthBoxOuter>
+      <a className="btn btn-primary btn-block" href="/api/login/facebook">
+        Sign in with facebook
+      </a>
+
+      <Separator>or</Separator>
+
+      <EmailPasswordForm />
+    </AuthBoxOuter>
+  </>
+)
 
 export default LoginBox

@@ -1,10 +1,13 @@
 import Cookies from 'js-cookie'
 import { redirect } from 'redux-first-router'
 
-import { toHome, toLogin } from 'store/routerActions'
+import * as api from 'api'
 
+import { toHome, toLogin, toRegister } from 'store/routerActions'
 import { fetchCurrentUser } from 'store/currentUser/actions'
 import { fetchProducts } from 'store/products/actions'
+
+import { openModal } from 'Modals/bus'
 
 const maybeFetchCurrentUser = (dispatch, state) => {
   if (Cookies.get('authExpiresAt') && !state.currentUser.email)
@@ -46,6 +49,25 @@ const routesMap = {
     thunk: async (dispatch, getState) => {
       const currentUser = await maybeFetchCurrentUser(dispatch, getState())
       if (!currentUser) dispatch(toLogin())
+    },
+  },
+
+  REGISTER: {
+    path: '/register',
+  },
+
+  REGISTER_CONFIRM: {
+    path: '/register/confirm/:token',
+    thunk: async (dispatch, getState) => {
+      try {
+        const { token } = getState().location.payload
+        await api.postRegisterConfirmationtoken(token)
+        openModal('REGISTRATION_CONFIRMED')
+        dispatch(redirect(toLogin()))
+      } catch (e) {
+        openModal('ERROR', e)
+        dispatch(redirect(toRegister()))
+      }
     },
   },
 

@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import bus, { closeModal } from 'Modals/bus'
 
 import Help from 'Modals/contents/Help'
+import RegistrationConfirmed from 'Modals/contents/RegistrationConfirmed'
+import RegistrationPending from 'Modals/contents/RegistrationPending'
 import UploadImage from 'Modals/contents/UploadImage'
 
 const Header = ({ children }) => (
@@ -71,6 +73,18 @@ class ModalContainer extends Component {
 
         {name === 'ERROR' && (
           <Modal title="Error">{getErrorMessage(payload)}</Modal>
+        )}
+
+        {name === 'REGISTRATION_CONFIRMED' && (
+          <Modal title="Your registration has been accepted">
+            <RegistrationConfirmed />
+          </Modal>
+        )}
+
+        {name === 'REGISTRATION_PENDING' && (
+          <Modal title="Your registration is pending">
+            <RegistrationPending />
+          </Modal>
         )}
 
         {name === 'UPLOAD_IMAGE' && (
