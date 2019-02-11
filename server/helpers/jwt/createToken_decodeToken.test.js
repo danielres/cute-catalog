@@ -1,16 +1,5 @@
 const createToken = require('./createToken')
-const jwt = require('jsonwebtoken')
-
-const decodeToken = ({ token, secret = process.env.AUTH_SECRET }) =>
-  new Promise((resolve, reject) => {
-    jwt.verify(token, secret, (err, decoded) => {
-      if (err) {
-        reject({ error: 'Unauthorized' })
-      } else {
-        resolve(decoded)
-      }
-    })
-  })
+const decodeToken = require('./decodeToken')
 
 describe('createToken() and decodeToken()', () => {
   it('creates and decodes a JWT token', async () => {
