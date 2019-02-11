@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { redirect } from 'redux-first-router'
+import { history, redirect } from 'redux-first-router'
 
 import * as api from 'api'
 
@@ -27,6 +27,7 @@ const routesMap = {
   HOME: {
     path: '/',
     thunk: (dispatch, getState) => {
+      if (window.location.toString().includes('#_=_')) history().push('/') // cleanup url after FB login
       maybeFetchCurrentUser(dispatch, getState())
       dispatch(fetchProducts())
     },
