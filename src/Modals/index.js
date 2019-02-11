@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import bus, { closeModal } from 'Modals/bus'
 
-import Help from 'Modals/contents/Help'
 import RegistrationConfirmed from 'Modals/contents/RegistrationConfirmed'
 import RegistrationPending from 'Modals/contents/RegistrationPending'
 import UploadImage from 'Modals/contents/UploadImage'
@@ -90,12 +89,6 @@ class ModalContainer extends Component {
         {name === 'UPLOAD_IMAGE' && (
           <Modal title="Upload Image">
             <UploadImage />
-          </Modal>
-        )}
-
-        {name === 'VIEW_HELP' && (
-          <Modal title="Help">
-            <Help />
           </Modal>
         )}
 
