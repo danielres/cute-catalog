@@ -27,6 +27,7 @@
     "dropzone": "^5.5.1",
     "express": "~4.16.0",
     "formik": "^1.4.3",
+    "helmet": "^3.15.1",
     "html-to-text": "^4.0.0",
     "http-proxy-middleware": "^0.19.1",
     "imagekit": "^1.4.1",
