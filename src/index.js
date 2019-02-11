@@ -1,13 +1,17 @@
+import { Provider } from 'react-redux'
 import Cookies from 'js-cookie'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './App'
 import * as serviceWorker from './serviceWorker'
-
-import { Provider } from 'react-redux'
-import store from './store'
+import store from 'store'
 import { openModal } from 'Modals/bus'
+
+import App from './App'
+
+setTimeout(() => {
+  if (!Cookies.get('isCookiesConsented')) openModal('COOKIES')
+}, 500)
 
 const autoLogoutWatcher = () => {
   setInterval(() => {

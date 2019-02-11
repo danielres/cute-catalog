@@ -2,24 +2,32 @@ import React, { Component } from 'react'
 
 import bus, { closeModal } from 'Modals/bus'
 
+import Cookies from 'Modals/contents/Cookies'
+import CookiesPolicy from 'Modals/contents/CookiesPolicy'
 import RegistrationConfirmed from 'Modals/contents/RegistrationConfirmed'
 import RegistrationPending from 'Modals/contents/RegistrationPending'
 import UploadImage from 'Modals/contents/UploadImage'
 
-const Header = ({ children }) => (
+const Header = ({ children, noCloseButton }) => (
   <div className="modal-header">
     <h4 className="modal-title">{children}</h4>
-    <button className="close" onClick={closeModal} style={{ outline: 'none' }}>
-      &times;
-    </button>
+    {!noCloseButton && (
+      <button
+        className="close"
+        onClick={closeModal}
+        style={{ outline: 'none' }}
+      >
+        &times;
+      </button>
+    )}
   </div>
 )
 
-const Modal = ({ children, title }) => (
+const Modal = ({ children, noCloseButton, title }) => (
   <div className="modal d-block">
     <div className="modal-dialog">
       <div className="modal-content">
-        <Header>{title}</Header>
+        <Header noCloseButton={noCloseButton}>{title}</Header>
         <div className="modal-body">{children}</div>
       </div>
     </div>
@@ -69,6 +77,18 @@ class ModalContainer extends Component {
             <p>
               You might want to logout and login again to extend your session.
             </p>
+          </Modal>
+        )}
+
+        {name === 'COOKIES' && (
+          <Modal noCloseButton title="Cookies notice">
+            <Cookies />
+          </Modal>
+        )}
+
+        {name === 'COOKIES_POLICY' && (
+          <Modal title="Cookies policy">
+            <CookiesPolicy />
           </Modal>
         )}
 
