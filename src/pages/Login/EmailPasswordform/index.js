@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
       await postLoginEmailPasswordForm(values)
       setTimeout(() => dispatch(toHome()), 200)
     } catch (e) {
-      openModal('ERROR', { message: 'Login failed, please try again' })
+      openModal('ERROR', { message: e.message })
     }
   },
 })
