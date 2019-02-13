@@ -25,6 +25,15 @@ router.post('/', async (req, res, next) => {
     const user = await findUserByEmailPassword({ email, password })
     if (!user) return next(ServerError(404, 'User not found'))
 
+    const { emailConfirmedAt } = user
+    if (!emailConfirmedAt)
+      return next(
+        ServerError(
+          403,
+          'Email not verified. Please check your mailbox and use the confirmation link.'
+        )
+      )
+
     setAuthCookies({ res, user })
 
     res.json({ success: true })
