@@ -4,7 +4,7 @@ const router = express.Router()
 const Product = require('../models/Product')
 
 router.get('/', async (req, res) => {
-  const products = await Product.query().orderBy('title')
+  const products = await Product.query().orderBy('created_at', 'desc')
 
   res.json({ products })
 })
