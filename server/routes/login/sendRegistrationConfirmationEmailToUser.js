@@ -10,10 +10,13 @@ const { SITE_URL } = process.env
 
 sgMail.setApiKey(SENDGRID_API_KEY)
 
-const TOKEN_MAX_AGE = 30 // in minutes
+const { REGISTRATION_TOKEN_MAX_AGE } = process.env // in days
 
 const getConfirmationTokenForUserId = userId =>
-  createToken({ payload: { userId }, expiresIn: 60 * TOKEN_MAX_AGE })
+  createToken({
+    payload: { userId },
+    expiresIn: 60 * 60 * 24 * REGISTRATION_TOKEN_MAX_AGE,
+  })
 
 const getConfirmationUrlForUserId = userId => {
   const token = getConfirmationTokenForUserId(userId)
@@ -25,7 +28,7 @@ const sendRegistrationConfirmationEmailToUser = async user => {
   const html = `
     <h2>Thank you for registering!</h2>
     <p>Please activate your account by opening the link below.</p>
-    <p>Please note that this link is only valid during ${TOKEN_MAX_AGE} minutes</p>
+    <p>Please note that this link will expire in ${REGISTRATION_TOKEN_MAX_AGE} days</p>
     <p><a href="${confirmationUrl}" target="_blank">${confirmationUrl}</a></p>
   `
 

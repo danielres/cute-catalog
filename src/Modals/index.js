@@ -97,14 +97,16 @@ class ModalContainer extends Component {
         )}
 
         {name === 'REGISTRATION_CONFIRMED' && (
-          <Modal title="Your registration has been accepted">
+          <Modal title="Welcome aboard!">
             <RegistrationConfirmed />
           </Modal>
         )}
 
         {name === 'REGISTRATION_PENDING' && (
           <Modal title="Your registration is pending">
-            <RegistrationPending />
+            <RegistrationPending
+              registrationTokenMaxAge={payload.registrationTokenMaxAge}
+            />
           </Modal>
         )}
 

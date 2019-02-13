@@ -37,7 +37,12 @@ router.post('/register', async (req, res, next) => {
     const { email, password, name } = req.body
     const user = await createUserByEmailPassword({ email, name, password })
     await sendRegistrationConfirmationEmailToUser(user)
-    res.json({ success: true })
+    res.json({
+      success: true,
+      info: {
+        registrationTokenMaxAge: process.env.REGISTRATION_TOKEN_MAX_AGE,
+      },
+    })
   } catch (e) {
     if (e.name === 'ValidationError')
       next(

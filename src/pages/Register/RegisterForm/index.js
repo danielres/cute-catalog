@@ -10,8 +10,8 @@ const mapStateToProps = () => ({})
 const mapDispatchToProps = () => ({
   onSubmit: async values => {
     try {
-      await api.postRegisterForm(values)
-      openModal('REGISTRATION_PENDING')
+      const registrationTokenMaxAge = (await api.postRegisterForm(values)).info
+      openModal('REGISTRATION_PENDING', { registrationTokenMaxAge })
     } catch (e) {
       openModal('ERROR', e)
     }
