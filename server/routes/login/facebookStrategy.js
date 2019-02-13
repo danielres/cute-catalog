@@ -1,5 +1,6 @@
 const FacebookStrategy = require('passport-facebook').Strategy
 
+const countUsers = require('../../queries/countUsers')
 const findOrCreateUserByFacebookId = require('../../queries/findOrCreateUserByFacebookId')
 
 module.exports = new FacebookStrategy(
@@ -13,10 +14,12 @@ module.exports = new FacebookStrategy(
     let error
     let user
     try {
+      const isFirstUser = (await countUsers()) === 0
       user = await findOrCreateUserByFacebookId({
-        facebookId: profile.id,
-        name: profile.displayName,
         email: profile.emails[0].value,
+        facebookId: profile.id,
+        isAdmin: isFirstUser ? true : false,
+        name: profile.displayName,
       })
     } catch (e) {
       error = e

@@ -1,6 +1,10 @@
 const User = require('../models/User')
 
-const createUserByEmailPassword = ({ email, name, password }) =>
-  User.query().insert({ email, name, password })
+const createUserByEmailPassword = ({
+  email,
+  isAdmin = false,
+  name,
+  password,
+}) => User.query().insert({ email, isAdmin, name, password })
 
 module.exports = createUserByEmailPassword

@@ -3,6 +3,7 @@ const passport = require('passport')
 
 const ServerError = require('../../ServerError')
 
+const countUsers = require('../../queries/countUsers')
 const createUserByEmailPassword = require('../../queries/createUserByEmailPassword')
 const findUserByEmailPassword = require('../../queries/findUserByEmailPassword')
 const findUserById = require('../../queries/findUserById')
@@ -35,8 +36,16 @@ router.post('/', async (req, res, next) => {
 router.post('/register', async (req, res, next) => {
   try {
     const { email, password, name } = req.body
-    const user = await createUserByEmailPassword({ email, name, password })
+    const isFirstUser = (await countUsers()) === 0
+    const user = await createUserByEmailPassword({
+      email,
+      isAdmin: isFirstUser ? true : false,
+      name,
+      password,
+    })
+
     await sendRegistrationConfirmationEmailToUser(user)
+
     res.json({
       success: true,
       info: {
